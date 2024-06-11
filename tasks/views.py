@@ -4,9 +4,10 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-
-from tasks.models import TaskItem
-from tasks.serializers import TaskItemSerializer
+from rest_framework import viewsets
+from tasks.models import ContactItem, TaskItem, AssignedContacts
+from tasks.serializers import ContactItemSerializer, TaskItemSerializer, UserSerializer, AssignedContactsSerializer
+from django.contrib.auth.models import User
 
 class LoginView(ObtainAuthToken):
     
@@ -22,16 +23,20 @@ class LoginView(ObtainAuthToken):
         })
         
         
-class TaskItemView(APIView):
-    authentication_classes = [TokenAuthentication]
+class AssignedContactsViewSet(viewsets.ModelViewSet):
+    queryset = AssignedContacts.objects.all()
+    serializer_class = AssignedContactsSerializer        
+class TaskItemViewSet(viewsets.ModelViewSet):
+    queryset = TaskItem.objects.all()
+    serializer_class = TaskItemSerializer
+        
+    
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
-    
-    def get(self, req, format=None):
-        tasks = TaskItem.objects.all()
-        serialized_obj = TaskItemSerializer(tasks, many=True)
-        return Response(serialized_obj.data)
-    
-    # def post(self, req, format=None):
         
-        
+class ContactsViewSet(viewsets.ModelViewSet):
+    queryset = ContactItem.objects.all()
+    serializer_class = ContactItemSerializer
 
