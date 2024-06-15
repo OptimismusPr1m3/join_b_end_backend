@@ -14,7 +14,7 @@ class ContactItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 class TaskItemSerializer(serializers.HyperlinkedModelSerializer):
-    assignedContacts = AssignedContactsSerializer(many=True)
+    # assignedContacts = AssignedContactsSerializer(many=True)
     class Meta:
         model = TaskItem
         fields = '__all__'
@@ -24,4 +24,4 @@ class TaskItemSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ['url', 'username', 'email','last_login', 'date_joined']

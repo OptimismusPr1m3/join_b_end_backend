@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from tasks.views import LoginView, TaskItemViewSet, UserViewSet
+from tasks.views import ContactsViewSet, LoginView, TaskItemViewSet, UserViewSet
 
 router = DefaultRouter()
 router.register(r'tasks', TaskItemViewSet, basename='taskitem')
 router.register(r'users', UserViewSet, basename='user')
+router.register(r'contacts', ContactsViewSet, basename='contactitem')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

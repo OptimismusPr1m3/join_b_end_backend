@@ -15,13 +15,13 @@ class AssignedContacts(models.Model):
 class TaskItem(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=100)
-    assignedContacts = models.ManyToManyField(AssignedContacts, default=None)
+    assignedContacts = models.JSONField(default=None)
     date = models.DateField(default=datetime.date.today)
     priority = models.CharField(max_length=15)
     category = models.CharField(max_length=20)
-    subtasks = models.CharField(max_length=50)
+    subtasks = models.JSONField(max_length=50, default=None)
     state = models.CharField(max_length=20)
-    uniqueIndex = models.DecimalField(max_digits=50, decimal_places=50)
+    uniqueIndex = models.CharField(max_length=50)
 
 class ContactItem(models.Model):
     first_name = models.CharField(max_length=50)
