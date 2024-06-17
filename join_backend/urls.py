@@ -27,5 +27,5 @@ router.register(r'contacts', ContactsViewSet, basename='contactitem')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view()),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
