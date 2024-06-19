@@ -1,12 +1,8 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 
-from tasks.models import ContactItem, TaskItem, AssignedContacts
+from tasks.models import ContactItem, TaskItem
 
-class AssignedContactsSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = AssignedContacts
-        fields = '__all__'
 
 class ContactItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

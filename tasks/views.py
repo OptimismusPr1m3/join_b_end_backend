@@ -6,8 +6,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
-from tasks.models import ContactItem, TaskItem, AssignedContacts
-from tasks.serializers import ContactItemSerializer, EmailAuthTokenSerializer, TaskItemSerializer, UserRegistrationSerializer, UserSerializer, AssignedContactsSerializer
+from tasks.models import ContactItem, TaskItem
+from tasks.serializers import ContactItemSerializer, EmailAuthTokenSerializer, TaskItemSerializer, UserRegistrationSerializer, UserSerializer
 from django.contrib.auth.models import User
 
 class LoginView(ObtainAuthToken):
@@ -25,11 +25,7 @@ class LoginView(ObtainAuthToken):
             'first_name': user.first_name,
             'last_name': user.last_name,
         })
-           
-
-class AssignedContactsViewSet(viewsets.ModelViewSet):
-    queryset = AssignedContacts.objects.all()
-    serializer_class = AssignedContactsSerializer        
+                
 class TaskItemViewSet(viewsets.ModelViewSet):
     queryset = TaskItem.objects.all()
     serializer_class = TaskItemSerializer
