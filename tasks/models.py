@@ -15,8 +15,8 @@ class TaskItem(models.Model):
     uniqueIndex = models.CharField(max_length=50)
 
 class ContactItem(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=20)
     mail = models.CharField(max_length=50)
     color = models.CharField(max_length=50)
