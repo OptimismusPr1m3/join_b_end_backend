@@ -4,7 +4,7 @@ from django.db import models
 
     
 class TaskItem(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
     assignedContacts = models.JSONField(default=None)
     date = models.DateField(default=datetime.date.today)
