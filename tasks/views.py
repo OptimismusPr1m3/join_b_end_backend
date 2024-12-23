@@ -53,6 +53,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class ContactsViewSet(viewsets.ModelViewSet):
     queryset = ContactItem.objects.all()
     serializer_class = ContactItemSerializer
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = [TokenAuthentication]
 
